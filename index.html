@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hasan Hamidov — Cybersecurity Specialist &amp; Prospective PhD Researcher</title>
+<meta name="description" content="Hasan Hamidov, Baku-based cybersecurity specialist in SOC operations and detection engineering, researching IoT malware detection and network anomaly detection.">
+<meta name="author" content="Hasan Hamidov">
+<link rel="canonical" href="https://hasanhamidov.github.io/">
+
+<!-- ===== Open Graph / social ===== -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Hasan Hamidov — Cybersecurity Specialist &amp; Prospective PhD Researcher">
+<meta property="og:description" content="SOC & detection engineer at Azerbaijan Railways researching IoT malware detection, network anomaly detection and encrypted traffic analysis.">
+<meta property="og:url" content="https://hasanhamidov.github.io/">
+<meta property="og:site_name" content="Hasan Hamidov">
+<meta property="og:locale" content="en_US">
+<meta property="profile:first_name" content="Hasan">
+<meta property="profile:last_name" content="Hamidov">
+<!-- <meta property="og:image" content="https://hasanhamidov.github.io/og-image.png"> (1200×630) -->
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+
+<!-- Favicon: teal→indigo rounded square with a white "H" -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314b8a6'/%3E%3Cstop offset='1' stop-color='%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='38' fill='%23fff'%3EH%3C/text%3E%3C/svg%3E">
+
+<!-- Apply saved theme before first paint (no flash) -->
+<script>
+(function(){var r=document.documentElement;r.className+=' js';try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')r.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hasan Hamidov",
+  "jobTitle": "Cybersecurity Specialist",
+  "worksFor": {"@type": "Organization", "name": "Azerbaijan Railways"},
+  "alumniOf": {"@type": "CollegeOrUniversity", "name": "Azerbaijan Technical University"},
+  "address": {"@type": "PostalAddress", "addressLocality": "Baku", "addressCountry": "AZ"},
+  "email": "mailto:hasanhamidovinfo@gmail.com",
+  "url": "https://hasanhamidov.github.io/",
+  "sameAs": ["https://linkedin.com/in/hasanhamidov", "https://github.com/hasanhamidov"],
+  "knowsAbout": ["IoT security and malware detection", "Network anomaly detection", "Encrypted traffic analysis", "SOC alert triage", "Critical-infrastructure security"]
+}
+</script>
+
+<style>
+/* ===== Design tokens ===== */
+:root{
+  --bg:#f7f9fc;--surface:#fff;--text:#0f172a;--muted:#475569;--border:#e2e8f0;
+  --accent:#0f766e;--accent-bright:#14b8a6;--accent-2:#6366f1;--accent-soft:#e6f6f4;
+  --tag2-bg:#eef0ff;--tag2-fg:#4338ca;
+  --amber-bg:#fef3c7;--amber-fg:#92400e;--grey-bg:#f1f5f9;--grey-fg:#475569;
+  --nav-bg:rgba(247,249,252,.86);
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px -14px rgba(15,23,42,.14);
+  --grad:linear-gradient(135deg,var(--accent-bright),var(--accent-2));
+  --grad-text:linear-gradient(135deg,var(--accent),var(--accent-2));
+  --ink:#0b1120;
+  --f-head:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1120;--surface:#111a2e;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;
+    --accent:#2dd4bf;--accent-bright:#2dd4bf;--accent-2:#818cf8;--accent-soft:#0f2a2c;
+    --tag2-bg:#1c1f45;--tag2-fg:#c7d2fe;
+    --amber-bg:rgba(251,191,36,.12);--amber-fg:#fcd34d;--grey-bg:rgba(148,163,184,.12);--grey-fg:#cbd5e1;
+    --nav-bg:rgba(11,17,32,.86);--shadow:none;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1120;--surface:#111a2e;--text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;
+  --accent:#2dd4bf;--accent-bright:#2dd4bf;--accent-2:#818cf8;--accent-soft:#0f2a2c;
+  --tag2-bg:#1c1f45;--tag2-fg:#c7d2fe;
+  --amber-bg:rgba(251,191,36,.12);--amber-fg:#fcd34d;--grey-bg:rgba(148,163,184,.12);--grey-fg:#cbd5e1;
+  --nav-bg:rgba(11,17,32,.86);--shadow:none;color-scheme:dark;
+}
+
+/* ===== Base ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--f-head);font-weight:700;line-height:1.2;margin:0;letter-spacing:-.015em}
+p{margin:0}
+a{color:var(--accent)}
+img,svg{display:block;max-width:100%}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit;cursor:pointer}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{width:min(1120px,100% - 48px);margin-inline:auto}
+.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mono{font-family:var(--f-mono)}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:#0f766e;color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+
+/* Dark bands (hero + contact): always dark, in both themes */
+.band{--accent:#2dd4bf;--accent-2:#818cf8;position:relative;overflow:hidden;background:var(--ink);color:#fff;isolation:isolate}
+.band-grid{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.22;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 25%,transparent 75%)}
+.glow{position:absolute;z-index:-1;width:560px;height:560px;border-radius:50%;filter:blur(100px);opacity:.32;pointer-events:none}
+.glow.g1{background:#14b8a6;top:-220px;left:-180px}
+.glow.g2{background:#6366f1;bottom:-260px;right:-160px}
+
+/* ===== Navigation ===== */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background-color .25s,border-color .25s;border-bottom:1px solid transparent}
+.site-header:not(.solid):not(.open){--accent:#2dd4bf}
+.site-header.solid,.site-header.open{background:var(--nav-bg);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom-color:var(--border)}
+.nav{display:flex;align-items:center;gap:16px;height:68px}
+.logo{font:500 1.05rem var(--f-mono);color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:2px;margin-right:auto}
+.cursor{display:inline-block;width:.55em;height:1.1em;background:#2dd4bf;margin-left:3px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nav-links{display:flex;gap:4px}
+.nav-links a{position:relative;display:block;padding:8px 12px;border-radius:8px;color:#cbd5e1;text-decoration:none;font-size:.92rem;font-weight:500}
+.nav-links a:hover{color:#fff}
+.nav-links a[aria-current]{color:#fff}
+.nav-links a[aria-current]::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:2px;border-radius:2px;background:var(--grad)}
+.nav-tools{display:flex;align-items:center;gap:8px}
+.icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#e2e8f0}
+.icon-btn:hover{border-color:#2dd4bf}
+.cv-pill{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:999px;font:500 .85rem var(--f-mono);text-decoration:none;color:#0b1120;background:linear-gradient(135deg,#2dd4bf,#818cf8)}
+.cv-pill:hover{filter:brightness(1.08)}
+.menu-btn{display:none}
+.menu-btn[aria-expanded="true"] .i-menu,.menu-btn:not([aria-expanded="true"]) .i-close{display:none}
+.site-header.open{background:var(--bg)}
+.site-header.solid .logo,.site-header.open .logo{color:var(--text)}
+.site-header.solid .nav-links a,.site-header.open .nav-links a{color:var(--muted)}
+.site-header.solid .nav-links a:hover,.site-header.solid .nav-links a[aria-current],.site-header.open .nav-links a[aria-current]{color:var(--text)}
+.site-header.solid .icon-btn,.site-header.open .icon-btn{color:var(--text);border-color:var(--border)}
+.site-header.solid .icon-btn:hover{border-color:var(--accent)}
+/* sun shown in dark mode, moon in light mode */
+.t-sun{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .t-sun{display:block}:root:not([data-theme="light"]) .t-moon{display:none}}
+:root[data-theme="dark"] .t-sun{display:block}:root[data-theme="dark"] .t-moon{display:none}
+
+/* ===== Hero ===== */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:128px 0 168px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:999px;border:1px solid rgba(45,212,191,.35);background:rgba(45,212,191,.08);color:#99f6e4;font:500 .8rem var(--f-mono)}
+.dot{position:relative;width:8px;height:8px;border-radius:50%;background:#2dd4bf}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2dd4bf;animation:pulse 2s ease-out infinite}
+@keyframes pulse{from{transform:scale(1);opacity:.7}to{transform:scale(3);opacity:0}}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);line-height:1.05;letter-spacing:-.03em;margin:22px 0 18px;color:#fff}
+.surname{position:relative;white-space:nowrap}
+.surname::after{content:"";position:absolute;left:0;right:0;bottom:-.08em;height:.11em;border-radius:99px;background:linear-gradient(135deg,#14b8a6,#6366f1)}
+.subtitle{font:500 1.1rem/1.5 var(--f-body);color:#e2e8f0}
+.loc{display:flex;align-items:center;gap:6px;margin-top:10px;color:#94a3b8;font:400 .9rem var(--f-mono)}
+.loc .i{width:16px;height:16px;color:#2dd4bf}
+.bio{margin-top:22px;color:#cbd5e1;max-width:58ch}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;border:1px solid transparent;font-weight:600;font-size:.95rem;line-height:1.3;text-decoration:none;transition:transform .2s,border-color .2s,background-color .2s}
+.btn .i{width:18px;height:18px}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,#2dd4bf,#818cf8);color:#0b1120}
+.btn-ghost{color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)}
+.btn-ghost:hover{border-color:#2dd4bf;background:rgba(45,212,191,.08)}
+
+/* Terminal card */
+.term{border-radius:16px;background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(148,163,184,.14)}
+.term-bar span{width:11px;height:11px;border-radius:50%}
+.term-bar span:nth-child(1){background:#f87171}.term-bar span:nth-child(2){background:#fbbf24}.term-bar span:nth-child(3){background:#34d399}
+.term-title{flex:1;text-align:center;margin-right:40px;font:400 .8rem var(--f-mono);color:#94a3b8}
+.term-body{padding:20px 22px 24px;font:400 .88rem/1.8 var(--f-mono);color:#cbd5e1}
+.ln{display:block;white-space:pre-wrap;overflow-wrap:anywhere}
+.ln[hidden]{display:none}
+.ln.cmd{color:#f1f5f9;margin-top:6px}.ln.cmd:first-child{margin-top:0}
+.p{color:#2dd4bf}.k{color:#a5b4fc}
+.cur{color:#2dd4bf;animation:blink 1s steps(1) infinite}
+
+/* ===== Stats strip ===== */
+.stats{position:relative;z-index:2;margin-top:-88px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;box-shadow:var(--shadow)}
+.stat-num{display:block;font:700 2.5rem/1.1 var(--f-head);font-variant-numeric:tabular-nums;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
+.stat-label{display:block;margin-top:6px;color:var(--muted);font-size:.92rem;line-height:1.45}
+
+/* ===== Sections ===== */
+.section{padding:96px 0;scroll-margin-top:68px}
+.eyebrow{font:500 .85rem var(--f-mono);color:var(--accent);margin-bottom:10px}
+.section h2{font-size:clamp(1.75rem,3.4vw,2.15rem)}
+.lead{color:var(--muted);max-width:62ch;margin-top:12px}
+.head{margin-bottom:44px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);transition:transform .25s,border-color .25s}
+.lift:hover{transform:translateY(-2px);border-color:var(--accent)}
+.ico{display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:12px;background:var(--accent-soft);color:var(--accent)}
+.ico .i{width:22px;height:22px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font:500 .76rem/1 var(--f-mono);padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tag.alt{background:var(--tag2-bg);color:var(--tag2-fg)}
+
+/* Research bento */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tile{padding:28px;display:flex;flex-direction:column}
+.tile h3{font-size:1.15rem;margin:20px 0 8px}
+.tile p{color:var(--muted);font-size:.96rem}
+.tile.big{grid-column:span 2;grid-row:span 2;background:radial-gradient(520px 280px at 100% 100%,color-mix(in srgb,var(--accent-2) 12%,transparent),transparent 70%),var(--surface)}
+.tile.big h3{font-size:1.6rem;margin-top:24px}
+.tile.big p{font-size:1.05rem;max-width:46ch}
+.tile.wide{grid-column:span 2}
+.nodes{margin-top:auto;padding-top:24px;width:100%;max-width:440px;align-self:flex-end}
+.n-line{stroke:var(--accent-bright);stroke-opacity:.45;stroke-width:1.4}
+.n-line.bad{stroke:var(--accent-2);stroke-dasharray:4 4;stroke-opacity:.8}
+.n-node{fill:var(--surface);stroke:var(--accent-bright);stroke-width:2}
+.n-hub{fill:var(--accent-bright)}
+.n-bad{fill:var(--accent-2)}
+.n-ring{fill:none;stroke:var(--accent-2);stroke-opacity:.4;stroke-width:1.5}
+
+/* Experience tabs */
+.tabs{display:grid;grid-template-columns:270px 1fr;gap:36px;align-items:start}
+.tabs>*{min-width:0}
+.tablist{display:flex;flex-direction:column;border-left:2px solid var(--border)}
+.tab{display:block;width:100%;text-align:left;background:none;border:0;border-left:2px solid transparent;margin-left:-2px;padding:14px 18px;border-radius:0 10px 10px 0;transition:background-color .2s,border-color .2s}
+.tab:hover{background:var(--surface)}
+.tab-co{display:block;font-weight:600;color:var(--text);line-height:1.35}
+.tab-date{display:block;font:400 .78rem var(--f-mono);color:var(--muted);margin-top:4px}
+.tab[aria-selected="true"]{border-left-color:var(--accent);background:var(--accent-soft)}
+.tab[aria-selected="true"] .tab-co{color:var(--accent)}
+.panel{padding:32px}
+.panel h3{font-size:1.45rem}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;color:var(--muted);font-size:.95rem}
+.meta .at{color:var(--accent);font-weight:600}
+.meta .mono{font-size:.82rem;line-height:1.7}
+.bullets{margin-top:22px;display:grid;gap:12px}
+.bullets li{position:relative;padding-left:24px}
+.bullets li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-bright);transform:rotate(45deg)}
+
+/* Education + certificates */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.col-title{display:flex;align-items:center;gap:10px;font-size:1.15rem;margin-bottom:18px}
+.col-title .i{color:var(--accent)}
+.edu{position:relative;padding:24px 24px 24px 30px;margin-bottom:16px}
+.edu::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:0 4px 4px 0;background:linear-gradient(180deg,var(--accent-bright),var(--accent-2))}
+.edu-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:flex-start}
+.edu h4{font-size:1.12rem}
+.edu p{color:var(--muted);margin-top:4px}
+.edu .mono{font-size:.8rem;color:var(--muted)}
+.gpa{font:500 .8rem var(--f-mono);padding:5px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.langs{margin-top:26px}
+.langs h4{font:500 .82rem var(--f-mono);color:var(--muted);margin-bottom:10px;letter-spacing:0}
+.lang{display:inline-block;margin:0 6px 8px 0;padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:.9rem}
+.lang span{color:var(--muted)}
+.certs{padding:8px 24px}
+.certs li{display:flex;gap:16px;align-items:center;padding:18px 0}
+.certs li+li{border-top:1px solid var(--border)}
+.certs .ico{width:40px;height:40px;border-radius:10px}
+.cert-t{font-weight:600;line-height:1.4}
+.cert-s{color:var(--muted);font-size:.9rem;line-height:1.5}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proj{position:relative;overflow:hidden;padding:28px 26px 24px;display:flex;flex-direction:column}
+.proj::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad)}
+.proj-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.status{font:500 .74rem var(--f-mono);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.status.prog{background:var(--amber-bg);color:var(--amber-fg)}
+.status.plan{background:var(--grey-bg);color:var(--grey-fg)}
+.proj h3{font-size:1.15rem;margin:20px 0 8px}
+.proj p{color:var(--muted);font-size:.95rem}
+.proj .tags{margin-bottom:22px}
+.more{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;text-decoration:none}
+.more:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Publications */
+.callout{display:flex;gap:24px;align-items:flex-start;padding:32px;border:2px dashed var(--border);border-radius:16px;background:var(--surface)}
+.callout .ico{width:52px;height:52px;border-radius:14px}
+.callout h3{font-size:1.25rem}
+.callout p{color:var(--muted);margin-top:6px}
+.callout .mono{font-size:.8rem;color:var(--accent);margin-top:12px}
+
+/* ===== Contact band ===== */
+.contact{box-shadow:inset 0 1px 0 rgba(148,163,184,.16);padding:112px 0;text-align:center;scroll-margin-top:68px}
+.contact .eyebrow{color:#2dd4bf}
+.contact h2{font-size:clamp(2rem,5vw,3rem);color:#fff}
+.contact .sub{color:#cbd5e1;margin:14px auto 0;max-width:52ch}
+.mail-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin-top:36px}
+.mail-big{display:inline-flex;align-items:center;gap:12px;max-width:100%;padding:16px 24px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#fff;text-decoration:none;font:500 clamp(.92rem,3.4vw,1.3rem) var(--f-mono);overflow-wrap:anywhere;transition:border-color .2s,background-color .2s}
+.mail-big:hover{border-color:#2dd4bf;background:rgba(45,212,191,.08)}
+.mail-big .i{color:#2dd4bf;width:22px;height:22px}
+.socials{display:flex;justify-content:center;gap:12px;margin-top:28px}
+.socials a{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.2);color:#e2e8f0;transition:border-color .2s,color .2s}
+.socials a:hover{border-color:#2dd4bf;color:#2dd4bf}
+
+/* ===== Footer ===== */
+.footer{border-top:1px solid var(--border);padding:22px 0;font:400 .82rem var(--f-mono);color:var(--muted)}
+.footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+.footer a{color:var(--muted)}
+.footer a:hover{color:var(--accent)}
+
+/* ===== Reveal on scroll ===== */
+@media (prefers-reduced-motion: no-preference){
+  .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .js .reveal.in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ===== Responsive ===== */
+@media (max-width:1024px){
+  .hero-grid{gap:36px}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .tile.big{grid-row:auto}
+  .tile.wide{grid-column:auto}
+}
+@media (max-width:860px){
+  .menu-btn{display:inline-grid}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px 16px 16px;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+  .site-header.open .nav-links{display:flex}
+  .nav-links a{padding:13px 12px;font-size:1.02rem}
+  .nav-links a[aria-current]::after{left:0;right:auto;top:12px;bottom:12px;width:3px;height:auto}
+  .hero{min-height:0;padding:116px 0 140px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .stats{grid-template-columns:repeat(2,1fr);margin-top:-80px}
+  .tabs{grid-template-columns:1fr;gap:20px}
+  .tablist{flex-direction:row;overflow-x:auto;border-left:0;border-bottom:2px solid var(--border);scroll-snap-type:x proximity;scrollbar-width:thin}
+  .tab{width:auto;flex:none;white-space:nowrap;border-left:0;margin-left:0;border-bottom:2px solid transparent;margin-bottom:-2px;border-radius:10px 10px 0 0;scroll-snap-align:start}
+  .tab[aria-selected="true"]{border-bottom-color:var(--accent)}
+  .edu-grid{grid-template-columns:1fr;gap:40px}
+  .projects{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .wrap{width:calc(100% - 32px)}
+  .section{padding:64px 0}
+  .contact{padding:80px 0}
+  .head{margin-bottom:32px}
+  .stats{gap:12px}
+  .stat{padding:18px 16px}
+  .stat-num{font-size:2rem}
+  .stat-label{font-size:.85rem}
+  .bento{grid-template-columns:1fr}
+  .tile.big{grid-column:auto}
+  .tile{padding:24px}
+  .tile.big h3{font-size:1.35rem}
+  .panel{padding:24px 20px}
+  .callout{flex-direction:column;padding:24px;gap:16px}
+  .certs{padding:4px 18px}
+  .term-body{font-size:.8rem;padding:16px 16px 20px}
+  .glow{width:360px;height:360px}
+  .cv-pill{padding:7px 12px}
+  .nav{gap:10px}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ===== Icon sprite (referenced with <use href="#…">) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-in" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-1.96c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56C20.21 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4m4-4v4m-4 10v4m4-4v4M3 10h4m-4 4h4m10-4h4m-4 4h4"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 21h4"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M9 14h.01M15 14h.01M8 21l2-4m6 4-2-4"/></symbol>
+  <symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-net" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6m-6 4h6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12l6-6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2zM4 21V5"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== Navigation ===== -->
+<header class="site-header" id="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="logo" href="#top" aria-label="hasan.h, back to top">hasan.h<span class="cursor" aria-hidden="true"></span></a>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="i t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="i t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a class="cv-pill" href="cv.pdf" target="_blank" rel="noopener noreferrer">CV<span class="sr-only"> (opens in a new tab)</span></a>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <svg class="i i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="i i-close" aria-hidden="true"><use href="#i-x"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ===== Hero ===== -->
+<section class="band hero" id="hero" aria-labelledby="hero-title">
+  <svg class="band-grid" aria-hidden="true"><defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#94a3b8" stroke-width=".6"/><circle cx="0" cy="0" r="1.8" fill="#5eead4"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  <div class="glow g1" aria-hidden="true"></div>
+  <div class="glow g2" aria-hidden="true"></div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <!-- Optional portrait: uncomment and add photo.jpg next to index.html
+      <img src="photo.jpg" alt="Portrait of Hasan Hamidov" width="96" height="96" style="border-radius:50%;margin-bottom:20px;border:2px solid #2dd4bf">
+      -->
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Open to PhD positions</span>
+      <h1 id="hero-title">Hasan <span class="surname">Hamidov</span></h1>
+      <p class="subtitle">Cybersecurity Specialist · SOC &amp; Detection Engineering · Prospective PhD researcher</p>
+      <p class="loc"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Baku, Azerbaijan</p>
+      <p class="bio">I work where security operations meet research. At Azerbaijan Railways I detect and investigate threats against critical-infrastructure systems, and I bring that experience to research on IoT malware detection, network anomaly detection and encrypted traffic analysis. My goal is to build detection methods that make SOC alert triage faster and more reliable.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="cv.pdf" download><svg class="i" aria-hidden="true"><use href="#i-dl"/></svg>Download CV</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg>LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-ghost" href="https://github.com/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-gh"/></svg>GitHub<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-ghost" href="mailto:hasanhamidovinfo@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+      </div>
+    </div>
+
+    <!-- Terminal card: edit the lines below (keep the class names) -->
+    <div class="term" role="group" aria-label="Profile summary terminal">
+      <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span><p class="term-title">~/profile</p></div>
+      <pre class="sr-only">$ whoami
+hasan_hamidov — SOC &amp; detection engineer
+$ cat research_focus.txt
+IoT malware detection
+network anomaly detection
+encrypted traffic analysis
+$ uptime
+SOC @ Azerbaijan Railways since 2025-09
+$ status --phd
+seeking a fully funded PhD position</pre>
+      <div class="term-body" id="term" aria-hidden="true"><span class="ln cmd"><span class="p">$ </span>whoami</span><span class="ln">hasan_hamidov — <span class="k">SOC &amp; detection engineer</span></span><span class="ln cmd"><span class="p">$ </span>cat <span class="k">research_focus.txt</span></span><span class="ln">IoT malware detection</span><span class="ln">network anomaly detection</span><span class="ln">encrypted traffic analysis</span><span class="ln cmd"><span class="p">$ </span>uptime</span><span class="ln">SOC @ <span class="k">Azerbaijan Railways</span> since 2025-09</span><span class="ln cmd"><span class="p">$ </span>status <span class="k">--phd</span></span><span class="ln">seeking a <span class="k">fully funded PhD position</span> <span class="cur">▍</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats strip ===== -->
+<section aria-labelledby="stats-title">
+  <h2 id="stats-title" class="sr-only">At a glance</h2>
+  <ul class="wrap stats">
+    <li class="stat"><span class="stat-num" data-count="30" data-prefix="~" data-suffix="%">~30%</span><span class="stat-label">fewer false-positive alerts</span></li>
+    <li class="stat"><span class="stat-num" data-count="50" data-suffix="+">50+</span><span class="stat-label">critical systems under PAM</span></li>
+    <li class="stat"><span class="stat-num" data-count="600" data-suffix="+">600+</span><span class="stat-label">hours of blue-team training</span></li>
+    <li class="stat"><span class="stat-num" data-count="96.4">96.4</span><span class="stat-label">MSc GPA / 100</span></li>
+  </ul>
+</section>
+
+<!-- ===== Research interests ===== -->
+<section class="section" id="research" aria-labelledby="research-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">// research</p>
+      <h2 id="research-title">Research interests</h2>
+      <p class="lead">Problems I want to work on during a PhD, each grounded in what I see every day in a security operations centre.</p>
+    </div>
+    <div class="bento">
+      <article class="card lift tile big reveal">
+        <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-chip"/></svg></span>
+        <h3>IoT Security &amp; Malware Detection</h3>
+        <p>Detecting compromised IoT devices and botnet activity, such as Mirai variants, from their network behaviour.</p>
+        <div class="tags"><span class="tag">IoT-23</span><span class="tag">Zeek</span><span class="tag alt">ML</span></div>
+        <svg class="nodes" viewBox="0 0 320 130" aria-hidden="true">
+          <path class="n-line" d="M160 65 40 28M160 65 58 108M160 65 112 18M160 65 222 22M160 65 116 116M160 65 250 112"/>
+          <path class="n-line bad" d="M160 65 284 58M284 58 222 22M284 58 250 112"/>
+          <circle class="n-ring" cx="284" cy="58" r="16"/>
+          <circle class="n-node" cx="40" cy="28" r="6"/><circle class="n-node" cx="58" cy="108" r="6"/><circle class="n-node" cx="112" cy="18" r="5"/>
+          <circle class="n-node" cx="222" cy="22" r="6"/><circle class="n-node" cx="116" cy="116" r="5"/><circle class="n-node" cx="250" cy="112" r="6"/>
+          <circle class="n-hub" cx="160" cy="65" r="10"/><circle class="n-bad" cx="284" cy="58" r="7"/>
+        </svg>
+      </article>
+      <article class="card lift tile reveal">
+        <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-pulse"/></svg></span>
+        <h3>Network Anomaly Detection</h3>
+        <p>Flow-based and statistical methods that flag unusual traffic with few false positives.</p>
+      </article>
+      <article class="card lift tile reveal">
+        <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span>
+        <h3>Encrypted Traffic Analysis</h3>
+        <p>Finding threats in TLS traffic from metadata, timing and handshake features, without decryption.</p>
+      </article>
+      <article class="card lift tile reveal">
+        <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        <h3>SOC Alert Triage</h3>
+        <p>Better correlation, prioritisation and automation to reduce analyst fatigue.</p>
+      </article>
+      <article class="card lift tile wide reveal">
+        <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-train"/></svg></span>
+        <h3>Critical-Infrastructure Security</h3>
+        <p>Defending transport and industrial environments where availability and safety come first.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Experience ===== -->
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">// experience</p>
+      <h2 id="experience-title">Experience</h2>
+      <p class="lead">Hands-on security operations, from an internship to critical infrastructure.</p>
+    </div>
+    <div class="tabs reveal">
+      <div class="tablist" role="tablist" aria-label="Positions" aria-orientation="vertical">
+        <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"><span class="tab-co">Azerbaijan Railways</span><span class="tab-date">2025-09 – now</span></button>
+        <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">AzInvest Telecom</span><span class="tab-date">2025</span></button>
+        <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">AzInTelecom</span><span class="tab-date">2024</span></button>
+        <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">Azerbaijan Technical Univ.</span><span class="tab-date">2022 – 2024</span></button>
+      </div>
+
+      <div class="card panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
+        <h3>Cyber Security Specialist</h3>
+        <p class="meta"><span class="at">Azerbaijan Railways</span><span>Baku</span><span class="mono">Sep 2025 – Present</span></p>
+        <ul class="bullets">
+          <li>Monitor and investigate security incidents with IBM QRadar and Palo Alto Cortex XDR/XSOAR.</li>
+          <li>Build correlation rules and BIOCs that cut false-positive alerts by about 30%.</li>
+          <li>Run DFIR investigations and administer CyberArk PAM for 50+ critical-infrastructure systems.</li>
+        </ul>
+        <div class="tags"><span class="tag">QRadar</span><span class="tag">Cortex XDR</span><span class="tag">XSOAR</span><span class="tag">CyberArk</span></div>
+      </div>
+
+      <div class="card panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
+        <h3>IT Support Engineer</h3>
+        <p class="meta"><span class="at">AzInvest Telecom Technology</span><span>Baku</span><span class="mono">2025</span></p>
+        <!-- Edit these bullets -->
+        <ul class="bullets">
+          <li>Provided technical support for users, workstations and internal systems.</li>
+          <li>Troubleshot hardware, software and network issues and documented resolutions.</li>
+        </ul>
+      </div>
+
+      <div class="card panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
+        <h3>SOC Analyst Intern</h3>
+        <p class="meta"><span class="at">AzInTelecom</span><span>Baku</span><span class="mono">2024</span></p>
+        <!-- Edit these bullets -->
+        <ul class="bullets">
+          <li>Triaged SIEM alerts and escalated suspicious activity to senior analysts.</li>
+          <li>Gained practical experience with SOC workflows, log analysis and incident documentation.</li>
+        </ul>
+      </div>
+
+      <div class="card panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" tabindex="0" hidden>
+        <h3>Volunteer, Cybersecurity Department</h3>
+        <p class="meta"><span class="at">Azerbaijan Technical University</span><span>Baku</span><span class="mono">2022 – 2024</span></p>
+        <!-- Edit these bullets -->
+        <ul class="bullets">
+          <li>Supported departmental labs, events and student activities in cybersecurity.</li>
+          <li>Helped fellow students with practical security tools and coursework.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Education & certificates ===== -->
+<section class="section" id="education" aria-labelledby="education-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">// education</p>
+      <h2 id="education-title">Education &amp; certificates</h2>
+    </div>
+    <div class="edu-grid">
+      <div class="reveal">
+        <h3 class="col-title"><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg>Education</h3>
+        <article class="card lift edu">
+          <div class="edu-top">
+            <div>
+              <h4>MSc in Cybersecurity</h4>
+              <p>Azerbaijan Technical University</p>
+              <p class="mono">2025 – 2027 (expected)</p>
+            </div>
+            <span class="gpa">GPA 96.4 / 100</span>
+          </div>
+        </article>
+        <article class="card lift edu">
+          <div class="edu-top">
+            <div>
+              <h4>BSc in Information Security</h4>
+              <p>Azerbaijan Technical University</p>
+              <p class="mono">2021 – 2025</p>
+            </div>
+            <span class="gpa">GPA 90.3 / 100</span>
+          </div>
+        </article>
+        <div class="langs">
+          <h4>Languages</h4>
+          <span class="lang">Azerbaijani <span>(native)</span></span><span class="lang">Turkish <span>(native)</span></span><span class="lang">English <span>(professional)</span></span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h3 class="col-title"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg>Certificates &amp; training</h3>
+        <ul class="card certs">
+          <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><div><p class="cert-t">Blue Team Defender Program</p><p class="cert-s">Technion / Azerbaijan Cybersecurity Center · 600+ hours</p></div></li>
+          <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span><div><p class="cert-t">Cisco CCST Cybersecurity</p><p class="cert-s">Cisco</p></div></li>
+          <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-net"/></svg></span><div><p class="cert-t">Cisco CCST Networking</p><p class="cert-s">Cisco</p></div></li>
+          <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg></span><div><p class="cert-t">Technest Scholarship</p><p class="cert-s">Winner, awarded twice</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Projects ===== -->
+<!-- Edit these projects: titles, descriptions, status ("prog" = In progress, "plan" = Planned), tags and GitHub links -->
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">// projects</p>
+      <h2 id="projects-title">Projects</h2>
+      <p class="lead">Open work that connects my SOC experience to my research questions.</p>
+    </div>
+    <div class="projects">
+      <article class="card lift proj reveal">
+        <div class="proj-top"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-radar"/></svg></span><span class="status prog">In progress</span></div>
+        <h3>IoT Malware Traffic Analysis on IoT-23</h3>
+        <p>Feature engineering and ML classification of benign and malicious IoT flows using the IoT-23 dataset.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Zeek</span><span class="tag alt">scikit-learn</span></div>
+        <a class="more" href="https://github.com/hasanhamidov/iot23-traffic-analysis" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
+      </article>
+      <article class="card lift proj reveal">
+        <div class="proj-top"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="status prog">In progress</span></div>
+        <h3>SIEM False-Positive Reduction</h3>
+        <p>Tuning correlation rules and behavioural detections to cut alert noise without losing true detections.</p>
+        <div class="tags"><span class="tag">QRadar</span><span class="tag">Cortex XDR</span><span class="tag alt">Detection engineering</span></div>
+        <a class="more" href="https://github.com/hasanhamidov/siem-fp-reduction" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
+      </article>
+      <article class="card lift proj reveal">
+        <div class="proj-top"><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="status plan">Planned</span></div>
+        <h3>CyberArk PAM Access Guide</h3>
+        <p>A step-by-step guide for securely accessing privileged accounts through CyberArk PAM.</p>
+        <div class="tags"><span class="tag">CyberArk</span><span class="tag">PAM</span><span class="tag alt">Docs</span></div>
+        <a class="more" href="https://github.com/hasanhamidov/cyberark-pam-guide" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Publications ===== -->
+<section class="section" id="publications" aria-labelledby="publications-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">// publications</p>
+      <h2 id="publications-title">Publications</h2>
+    </div>
+    <div class="callout reveal">
+      <span class="ico"><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg></span>
+      <div>
+        <h3>Preprint in preparation (2027)</h3>
+        <p>Topic: IoT malware detection from network traffic.</p>
+        <p class="mono">status: drafting</p>
+      </div>
+    </div>
+    <!-- Future publication entry: copy this block below the callout and fill it in
+    <article class="card" style="padding:24px;margin-top:16px">
+      <p><strong>Hasan Hamidov</strong>, Co-Author One, Co-Author Two</p>
+      <h3 style="font-size:1.1rem;margin:6px 0">Paper title goes here</h3>
+      <p class="mono" style="color:var(--muted);font-size:.85rem">Venue name · 2027</p>
+      <p style="margin-top:10px"><a href="paper.pdf">[PDF]</a> <a href="https://github.com/hasanhamidov/repo" target="_blank" rel="noopener noreferrer">[Code]<span class="sr-only"> (opens in a new tab)</span></a></p>
+    </article>
+    -->
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section class="band contact" id="contact" aria-labelledby="contact-title">
+  <svg class="band-grid" aria-hidden="true"><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  <div class="glow g1" aria-hidden="true"></div>
+  <div class="glow g2" aria-hidden="true"></div>
+  <div class="wrap reveal">
+    <p class="eyebrow">// contact</p>
+    <h2 id="contact-title">Let's talk research.</h2>
+    <p class="sub">I welcome conversations about research collaboration and PhD opportunities.</p>
+    <div class="mail-row">
+      <a class="mail-big" href="mailto:hasanhamidovinfo@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>hasanhamidovinfo@gmail.com</a>
+      <button class="btn btn-ghost" id="copy-btn" type="button" aria-label="Copy email address"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+    </div>
+    <p class="sr-only" id="copy-status" aria-live="polite"></p>
+    <div class="socials">
+      <a href="https://linkedin.com/in/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg><span class="sr-only">LinkedIn (opens in a new tab)</span></a>
+      <a href="https://github.com/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-gh"/></svg><span class="sr-only">GitHub (opens in a new tab)</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <span>© 2026 Hasan Hamidov</span>
+    <span>Last updated October 2026 · <a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var d=document,root=d.documentElement,hasIO='IntersectionObserver' in window;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mqDark=window.matchMedia('(prefers-color-scheme: dark)');
+
+  /* ----- Theme toggle ----- */
+  var tBtn=d.getElementById('theme-toggle');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':mqDark.matches;}
+  function syncToggle(){tBtn.setAttribute('aria-label',isDark()?'Switch to light theme':'Switch to dark theme');}
+  tBtn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+    syncToggle();
+  });
+  if(mqDark.addEventListener)mqDark.addEventListener('change',syncToggle);
+  syncToggle();
+
+  /* ----- Header: solid after hero, mobile menu ----- */
+  var header=d.getElementById('site-header'),hero=d.getElementById('hero');
+  var menuBtn=d.getElementById('menu-btn'),menu=d.getElementById('nav-menu');
+  if(hasIO){
+    new IntersectionObserver(function(es){header.classList.toggle('solid',!es[0].isIntersecting);},{rootMargin:'-68px 0px 0px 0px'}).observe(hero);
+  }else{header.classList.add('solid');}
+  function setMenu(open){
+    menuBtn.setAttribute('aria-expanded',String(open));
+    menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+    header.classList.toggle('open',open);
+  }
+  menuBtn.addEventListener('click',function(){setMenu(menuBtn.getAttribute('aria-expanded')!=='true');});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+  d.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&menuBtn.getAttribute('aria-expanded')==='true'){setMenu(false);menuBtn.focus();}
+  });
+
+  /* ----- Highlight current section in nav ----- */
+  var links={};
+  [].forEach.call(menu.querySelectorAll('a'),function(a){links[a.getAttribute('href').slice(1)]=a;});
+  function setCurrent(id){
+    Object.keys(links).forEach(function(k){
+      if(k===id)links[k].setAttribute('aria-current','true');else links[k].removeAttribute('aria-current');
+    });
+  }
+  if(hasIO){
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting)setCurrent(en.target.id);});
+    },{rootMargin:'-45% 0px -50% 0px'});
+    spy.observe(hero);
+    Object.keys(links).forEach(function(k){var s=d.getElementById(k);if(s)spy.observe(s);});
+    window.addEventListener('scroll',function(){
+      if(window.innerHeight+window.scrollY>=d.documentElement.scrollHeight-4)setCurrent('contact');
+    },{passive:true});
+  }
+
+  /* ----- Reveal on scroll ----- */
+  var rv=d.querySelectorAll('.reveal');
+  if(reduce||!hasIO){[].forEach.call(rv,function(el){el.classList.add('in');});}
+  else{
+    var ro=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -6% 0px',threshold:.05});
+    [].forEach.call(rv,function(el){ro.observe(el);});
+  }
+
+  /* ----- Count-up stats ----- */
+  function countUp(el){
+    var raw=el.getAttribute('data-count'),target=parseFloat(raw),dec=(raw.split('.')[1]||'').length;
+    var pre=el.getAttribute('data-prefix')||'',suf=el.getAttribute('data-suffix')||'',start=null;
+    function step(ts){
+      if(start===null)start=ts;
+      var p=Math.min((ts-start)/1400,1),e=1-Math.pow(1-p,3);
+      el.textContent=pre+(target*e).toFixed(dec)+suf;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!reduce&&hasIO){
+    var co=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){countUp(en.target);co.unobserve(en.target);}});
+    },{threshold:.6});
+    [].forEach.call(d.querySelectorAll('[data-count]'),function(n){co.observe(n);});
+  }
+
+  /* ----- Experience tabs ----- */
+  var tabs=[].slice.call(d.querySelectorAll('[role="tab"]')),tablist=d.querySelector('[role="tablist"]');
+  function selectTab(tab,focus){
+    tabs.forEach(function(t){
+      var on=t===tab;
+      t.setAttribute('aria-selected',String(on));
+      t.tabIndex=on?0:-1;
+      d.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+    });
+    if(focus){tab.focus();tab.scrollIntoView({block:'nearest',inline:'nearest'});}
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectTab(t,false);});
+    t.addEventListener('keydown',function(e){
+      var n=null,last=tabs.length-1;
+      if(e.key==='ArrowDown'||e.key==='ArrowRight')n=i===last?0:i+1;
+      else if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=i===0?last:i-1;
+      else if(e.key==='Home')n=0;
+      else if(e.key==='End')n=last;
+      if(n!==null){e.preventDefault();selectTab(tabs[n],true);}
+    });
+  });
+  var mqNarrow=window.matchMedia('(max-width: 860px)');
+  function syncOrient(){tablist.setAttribute('aria-orientation',mqNarrow.matches?'horizontal':'vertical');}
+  if(mqNarrow.addEventListener)mqNarrow.addEventListener('change',syncOrient);
+  syncOrient();
+
+  /* ----- Copy email ----- */
+  var copyBtn=d.getElementById('copy-btn'),copyLabel=copyBtn.querySelector('span'),live=d.getElementById('copy-status');
+  var EMAIL='hasanhamidovinfo@gmail.com',copyTimer;
+  function fallbackCopy(){
+    try{
+      var ta=d.createElement('textarea');ta.value=EMAIL;ta.setAttribute('readonly','');
+      ta.style.position='fixed';ta.style.opacity='0';d.body.appendChild(ta);ta.select();
+      var ok=d.execCommand('copy');d.body.removeChild(ta);return ok;
+    }catch(e){return false;}
+  }
+  function copied(ok){
+    copyLabel.textContent=ok?'Copied!':'Copy failed';
+    live.textContent=ok?'Email address copied to clipboard.':'Copy failed. Please select the address manually.';
+    clearTimeout(copyTimer);
+    copyTimer=setTimeout(function(){copyLabel.textContent='Copy';live.textContent='';},2200);
+  }
+  copyBtn.addEventListener('click',function(){
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(EMAIL).then(function(){copied(true);},function(){copied(fallbackCopy());});
+    }else{copied(fallbackCopy());}
+  });
+
+  /* ----- Terminal typing (visual only; full text is in the sr-only <pre>) ----- */
+  var term=d.getElementById('term');
+  if(term&&!reduce){
+    var lines=[].slice.call(term.querySelectorAll('.ln'));
+    var nodes=lines.map(function(l){
+      var out=[],w=d.createTreeWalker(l,NodeFilter.SHOW_TEXT);
+      while(w.nextNode())out.push({n:w.currentNode,t:w.currentNode.nodeValue,instant:!!w.currentNode.parentNode.closest('.p')});
+      return out;
+    });
+    term.style.minHeight=term.offsetHeight+'px';
+    lines.forEach(function(l){l.hidden=true;});
+    var i=0;
+    var next=function(){
+      if(i>=lines.length)return;
+      var line=lines[i],ns=nodes[i];i++;
+      line.hidden=false;
+      if(!line.classList.contains('cmd')){setTimeout(next,120);return;}
+      ns.forEach(function(x){if(!x.instant)x.n.nodeValue='';});
+      var k=0,c=0;
+      (function type(){
+        while(k<ns.length&&ns[k].instant)k++;
+        if(k>=ns.length){setTimeout(next,320);return;}
+        c++;ns[k].n.nodeValue=ns[k].t.slice(0,c);
+        if(c>=ns[k].t.length){k++;c=0;}
+        setTimeout(type,42);
+      })();
+    };
+    setTimeout(next,450);
+  }
+})();
+</script>
+</body>
+</html>
