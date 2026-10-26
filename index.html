@@ -8,7 +8,6 @@
 <meta name="author" content="Hasan Hamidov">
 <link rel="canonical" href="https://hasanhamidov.github.io/">
 
-<!-- ===== Open Graph / social ===== -->
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Hasan Hamidov — Cybersecurity Specialist &amp; Prospective PhD Researcher">
 <meta property="og:description" content="SOC & detection engineer at Azerbaijan Railways researching IoT malware detection, network anomaly detection and encrypted traffic analysis.">
@@ -17,15 +16,12 @@
 <meta property="og:locale" content="en_US">
 <meta property="profile:first_name" content="Hasan">
 <meta property="profile:last_name" content="Hamidov">
-<!-- <meta property="og:image" content="https://hasanhamidov.github.io/og-image.png"> (1200×630) -->
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
 
-<!-- Favicon: teal→indigo rounded square with a white "H" -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314b8a6'/%3E%3Cstop offset='1' stop-color='%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='38' fill='%23fff'%3EH%3C/text%3E%3C/svg%3E">
 
-<!-- Apply saved theme before first paint (no flash) -->
 <script>
 (function(){var r=document.documentElement;r.className+=' js';try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')r.setAttribute('data-theme',t);}catch(e){}})();
 </script>
@@ -45,13 +41,12 @@
   "address": {"@type": "PostalAddress", "addressLocality": "Baku", "addressCountry": "AZ"},
   "email": "mailto:hasanhamidovinfo@gmail.com",
   "url": "https://hasanhamidov.github.io/",
-  "sameAs": ["https://linkedin.com/in/hasanhamidov", "https://github.com/hasanhamidov"],
+  "sameAs": ["https://www.linkedin.com/in/hasan-hamidov/", "https://github.com/hasanhamidov"],
   "knowsAbout": ["IoT security and malware detection", "Network anomaly detection", "Encrypted traffic analysis", "SOC alert triage", "Critical-infrastructure security"]
 }
 </script>
 
 <style>
-/* ===== Design tokens ===== */
 :root{
   --bg:#f7f9fc;--surface:#fff;--text:#0f172a;--muted:#475569;--border:#e2e8f0;
   --accent:#0f766e;--accent-bright:#14b8a6;--accent-2:#6366f1;--accent-soft:#e6f6f4;
@@ -84,7 +79,6 @@
   --nav-bg:rgba(11,17,32,.86);--shadow:none;color-scheme:dark;
 }
 
-/* ===== Base ===== */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
@@ -104,14 +98,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .skip{position:absolute;left:16px;top:-60px;z-index:100;background:#0f766e;color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none}
 .skip:focus{top:12px}
 
-/* Dark bands (hero + contact): always dark, in both themes */
 .band{--accent:#2dd4bf;--accent-2:#818cf8;position:relative;overflow:hidden;background:var(--ink);color:#fff;isolation:isolate}
 .band-grid{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.22;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 25%,transparent 75%)}
 .glow{position:absolute;z-index:-1;width:560px;height:560px;border-radius:50%;filter:blur(100px);opacity:.32;pointer-events:none}
 .glow.g1{background:#14b8a6;top:-220px;left:-180px}
 .glow.g2{background:#6366f1;bottom:-260px;right:-160px}
 
-/* ===== Navigation ===== */
 .site-header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background-color .25s,border-color .25s;border-bottom:1px solid transparent}
 .site-header:not(.solid):not(.open){--accent:#2dd4bf}
 .site-header.solid,.site-header.open{background:var(--nav-bg);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom-color:var(--border)}
@@ -137,12 +129,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 .site-header.solid .nav-links a:hover,.site-header.solid .nav-links a[aria-current],.site-header.open .nav-links a[aria-current]{color:var(--text)}
 .site-header.solid .icon-btn,.site-header.open .icon-btn{color:var(--text);border-color:var(--border)}
 .site-header.solid .icon-btn:hover{border-color:var(--accent)}
-/* sun shown in dark mode, moon in light mode */
 .t-sun{display:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .t-sun{display:block}:root:not([data-theme="light"]) .t-moon{display:none}}
 :root[data-theme="dark"] .t-sun{display:block}:root[data-theme="dark"] .t-moon{display:none}
 
-/* ===== Hero ===== */
 .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:128px 0 168px}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 .pill{display:inline-flex;align-items:center;gap:10px;padding:6px 14px;border-radius:999px;border:1px solid rgba(45,212,191,.35);background:rgba(45,212,191,.08);color:#99f6e4;font:500 .8rem var(--f-mono)}
@@ -164,7 +154,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .btn-ghost{color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.04)}
 .btn-ghost:hover{border-color:#2dd4bf;background:rgba(45,212,191,.08)}
 
-/* Terminal card */
 .term{border-radius:16px;background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.2);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden}
 .term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid rgba(148,163,184,.14)}
 .term-bar span{width:11px;height:11px;border-radius:50%}
@@ -177,13 +166,11 @@ button{font:inherit;color:inherit;cursor:pointer}
 .p{color:#2dd4bf}.k{color:#a5b4fc}
 .cur{color:#2dd4bf;animation:blink 1s steps(1) infinite}
 
-/* ===== Stats strip ===== */
 .stats{position:relative;z-index:2;margin-top:-88px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 22px;box-shadow:var(--shadow)}
 .stat-num{display:block;font:700 2.5rem/1.1 var(--f-head);font-variant-numeric:tabular-nums;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:-.02em}
 .stat-label{display:block;margin-top:6px;color:var(--muted);font-size:.92rem;line-height:1.45}
 
-/* ===== Sections ===== */
 .section{padding:96px 0;scroll-margin-top:68px}
 .eyebrow{font:500 .85rem var(--f-mono);color:var(--accent);margin-bottom:10px}
 .section h2{font-size:clamp(1.75rem,3.4vw,2.15rem)}
@@ -197,7 +184,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tag{font:500 .76rem/1 var(--f-mono);padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 .tag.alt{background:var(--tag2-bg);color:var(--tag2-fg)}
 
-/* Research bento */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .tile{padding:28px;display:flex;flex-direction:column}
 .tile h3{font-size:1.15rem;margin:20px 0 8px}
@@ -214,7 +200,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .n-bad{fill:var(--accent-2)}
 .n-ring{fill:none;stroke:var(--accent-2);stroke-opacity:.4;stroke-width:1.5}
 
-/* Experience tabs */
 .tabs{display:grid;grid-template-columns:270px 1fr;gap:36px;align-items:start}
 .tabs>*{min-width:0}
 .tablist{display:flex;flex-direction:column;border-left:2px solid var(--border)}
@@ -233,7 +218,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .bullets li{position:relative;padding-left:24px}
 .bullets li::before{content:"";position:absolute;left:2px;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-bright);transform:rotate(45deg)}
 
-/* Education + certificates */
 .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .col-title{display:flex;align-items:center;gap:10px;font-size:1.15rem;margin-bottom:18px}
 .col-title .i{color:var(--accent)}
@@ -255,7 +239,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .cert-t{font-weight:600;line-height:1.4}
 .cert-s{color:var(--muted);font-size:.9rem;line-height:1.5}
 
-/* Projects */
 .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .proj{position:relative;overflow:hidden;padding:28px 26px 24px;display:flex;flex-direction:column}
 .proj::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad)}
@@ -269,14 +252,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .more{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;text-decoration:none}
 .more:hover{text-decoration:underline;text-underline-offset:4px}
 
-/* Publications */
 .callout{display:flex;gap:24px;align-items:flex-start;padding:32px;border:2px dashed var(--border);border-radius:16px;background:var(--surface)}
 .callout .ico{width:52px;height:52px;border-radius:14px}
 .callout h3{font-size:1.25rem}
 .callout p{color:var(--muted);margin-top:6px}
 .callout .mono{font-size:.8rem;color:var(--accent);margin-top:12px}
 
-/* ===== Contact band ===== */
 .contact{box-shadow:inset 0 1px 0 rgba(148,163,184,.16);padding:112px 0;text-align:center;scroll-margin-top:68px}
 .contact .eyebrow{color:#2dd4bf}
 .contact h2{font-size:clamp(2rem,5vw,3rem);color:#fff}
@@ -289,13 +270,11 @@ button{font:inherit;color:inherit;cursor:pointer}
 .socials a{display:grid;place-items:center;width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.2);color:#e2e8f0;transition:border-color .2s,color .2s}
 .socials a:hover{border-color:#2dd4bf;color:#2dd4bf}
 
-/* ===== Footer ===== */
 .footer{border-top:1px solid var(--border);padding:22px 0;font:400 .82rem var(--f-mono);color:var(--muted)}
 .footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
 .footer a{color:var(--muted)}
 .footer a:hover{color:var(--accent)}
 
-/* ===== Reveal on scroll ===== */
 @media (prefers-reduced-motion: no-preference){
   .js .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
   .js .reveal.in{opacity:1;transform:none}
@@ -304,7 +283,6 @@ button{font:inherit;color:inherit;cursor:pointer}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 
-/* ===== Responsive ===== */
 @media (max-width:1024px){
   .hero-grid{gap:36px}
   .bento{grid-template-columns:repeat(2,1fr)}
@@ -352,7 +330,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 </head>
 <body id="top">
 
-<!-- ===== Icon sprite (referenced with <use href="#…">) ===== -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-in" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
   <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-1.96c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56C20.21 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></symbol>
@@ -380,7 +357,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ===== Navigation ===== -->
 <header class="site-header" id="site-header">
   <nav class="wrap nav" aria-label="Main">
     <a class="logo" href="#top" aria-label="hasan.h, back to top">hasan.h<span class="cursor" aria-hidden="true"></span></a>
@@ -408,7 +384,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 <main id="main">
 
-<!-- ===== Hero ===== -->
 <section class="band hero" id="hero" aria-labelledby="hero-title">
   <svg class="band-grid" aria-hidden="true"><defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#94a3b8" stroke-width=".6"/><circle cx="0" cy="0" r="1.8" fill="#5eead4"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>
   <div class="glow g1" aria-hidden="true"></div>
@@ -416,9 +391,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   <div class="wrap hero-grid">
     <div>
-      <!-- Optional portrait: uncomment and add photo.jpg next to index.html
-      <img src="photo.jpg" alt="Portrait of Hasan Hamidov" width="96" height="96" style="border-radius:50%;margin-bottom:20px;border:2px solid #2dd4bf">
-      -->
       <span class="pill"><span class="dot" aria-hidden="true"></span>Open to PhD positions</span>
       <h1 id="hero-title">Hasan <span class="surname">Hamidov</span></h1>
       <p class="subtitle">Cybersecurity Specialist · SOC &amp; Detection Engineering · Prospective PhD researcher</p>
@@ -426,13 +398,12 @@ button{font:inherit;color:inherit;cursor:pointer}
       <p class="bio">I work where security operations meet research. At Azerbaijan Railways I detect and investigate threats against critical-infrastructure systems, and I bring that experience to research on IoT malware detection, network anomaly detection and encrypted traffic analysis. My goal is to build detection methods that make SOC alert triage faster and more reliable.</p>
       <div class="actions">
         <a class="btn btn-primary" href="cv.pdf" download><svg class="i" aria-hidden="true"><use href="#i-dl"/></svg>Download CV</a>
-        <a class="btn btn-ghost" href="https://linkedin.com/in/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg>LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/hasan-hamidov/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg>LinkedIn<span class="sr-only"> (opens in a new tab)</span></a>
         <a class="btn btn-ghost" href="https://github.com/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-gh"/></svg>GitHub<span class="sr-only"> (opens in a new tab)</span></a>
         <a class="btn btn-ghost" href="mailto:hasanhamidovinfo@gmail.com"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
       </div>
     </div>
 
-    <!-- Terminal card: edit the lines below (keep the class names) -->
     <div class="term" role="group" aria-label="Profile summary terminal">
       <div class="term-bar" aria-hidden="true"><span></span><span></span><span></span><p class="term-title">~/profile</p></div>
       <pre class="sr-only">$ whoami
@@ -450,7 +421,6 @@ seeking a fully funded PhD position</pre>
   </div>
 </section>
 
-<!-- ===== Stats strip ===== -->
 <section aria-labelledby="stats-title">
   <h2 id="stats-title" class="sr-only">At a glance</h2>
   <ul class="wrap stats">
@@ -461,7 +431,6 @@ seeking a fully funded PhD position</pre>
   </ul>
 </section>
 
-<!-- ===== Research interests ===== -->
 <section class="section" id="research" aria-labelledby="research-title">
   <div class="wrap">
     <div class="head reveal">
@@ -508,7 +477,6 @@ seeking a fully funded PhD position</pre>
   </div>
 </section>
 
-<!-- ===== Experience ===== -->
 <section class="section" id="experience" aria-labelledby="experience-title">
   <div class="wrap">
     <div class="head reveal">
@@ -519,9 +487,9 @@ seeking a fully funded PhD position</pre>
     <div class="tabs reveal">
       <div class="tablist" role="tablist" aria-label="Positions" aria-orientation="vertical">
         <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true" type="button"><span class="tab-co">Azerbaijan Railways</span><span class="tab-date">2025-09 – now</span></button>
-        <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">AzInvest Telecom</span><span class="tab-date">2025</span></button>
-        <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">AzInTelecom</span><span class="tab-date">2024</span></button>
-        <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">Azerbaijan Technical Univ.</span><span class="tab-date">2022 – 2024</span></button>
+        <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">AzInvest Telecom</span><span class="tab-date">2025-07 – 2025-09</span></button>
+        <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">AzInTelecom</span><span class="tab-date">2024-06 – 2024-07</span></button>
+        <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" type="button"><span class="tab-co">Azerbaijan Technical Univ.</span><span class="tab-date">2022-10 – 2024-10</span></button>
       </div>
 
       <div class="card panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1" tabindex="0">
@@ -531,44 +499,44 @@ seeking a fully funded PhD position</pre>
           <li>Monitor and investigate security incidents with IBM QRadar and Palo Alto Cortex XDR/XSOAR.</li>
           <li>Build correlation rules and BIOCs that cut false-positive alerts by about 30%.</li>
           <li>Run DFIR investigations and administer CyberArk PAM for 50+ critical-infrastructure systems.</li>
+          <li>Monitor Microsoft 365 for phishing, insider threats and account-compromise indicators.</li>
         </ul>
-        <div class="tags"><span class="tag">QRadar</span><span class="tag">Cortex XDR</span><span class="tag">XSOAR</span><span class="tag">CyberArk</span></div>
+        <div class="tags"><span class="tag">QRadar</span><span class="tag">Cortex XDR</span><span class="tag">XSOAR</span><span class="tag">CyberArk</span><span class="tag alt">Microsoft 365</span></div>
       </div>
 
       <div class="card panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2" tabindex="0" hidden>
         <h3>IT Support Engineer</h3>
-        <p class="meta"><span class="at">AzInvest Telecom Technology</span><span>Baku</span><span class="mono">2025</span></p>
-        <!-- Edit these bullets -->
+        <p class="meta"><span class="at">AzInvest Telecom Technology</span><span>Baku</span><span class="mono">Jul 2025 – Sep 2025</span></p>
         <ul class="bullets">
-          <li>Provided technical support for users, workstations and internal systems.</li>
-          <li>Troubleshot hardware, software and network issues and documented resolutions.</li>
+          <li>Administered Windows and Linux systems, managing user accounts, access permissions and system configurations.</li>
+          <li>Configured and maintained network infrastructure, troubleshooting connectivity and hardware issues.</li>
+          <li>Resolved support tickets across systems and network environments to minimise downtime.</li>
         </ul>
       </div>
 
       <div class="card panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3" tabindex="0" hidden>
         <h3>SOC Analyst Intern</h3>
-        <p class="meta"><span class="at">AzInTelecom</span><span>Baku</span><span class="mono">2024</span></p>
-        <!-- Edit these bullets -->
+        <p class="meta"><span class="at">AzInTelecom</span><span>Baku</span><span class="mono">Jun 2024 – Jul 2024</span></p>
         <ul class="bullets">
-          <li>Triaged SIEM alerts and escalated suspicious activity to senior analysts.</li>
-          <li>Gained practical experience with SOC workflows, log analysis and incident documentation.</li>
+          <li>Monitored SIEM alerts and assisted tier-1 analysts with real-time incident triage and investigation.</li>
+          <li>Analysed alert generation and log correlation to support detection-engineering workflows.</li>
+          <li>Supported governance, risk and compliance (GRC) activities alongside daily SOC operations.</li>
         </ul>
       </div>
 
       <div class="card panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4" tabindex="0" hidden>
         <h3>Volunteer, Cybersecurity Department</h3>
-        <p class="meta"><span class="at">Azerbaijan Technical University</span><span>Baku</span><span class="mono">2022 – 2024</span></p>
-        <!-- Edit these bullets -->
+        <p class="meta"><span class="at">Azerbaijan Technical University</span><span>Baku</span><span class="mono">Oct 2022 – Oct 2024</span></p>
         <ul class="bullets">
-          <li>Supported departmental labs, events and student activities in cybersecurity.</li>
-          <li>Helped fellow students with practical security tools and coursework.</li>
+          <li>Assisted academic staff in delivering network security labs and Blue Team workshops.</li>
+          <li>Helped design and run attack–defence simulation exercises, including virtual machine setup.</li>
+          <li>Contributed to peer-led security projects and campus cybersecurity awareness initiatives.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Education & certificates ===== -->
 <section class="section" id="education" aria-labelledby="education-title">
   <div class="wrap">
     <div class="head reveal">
@@ -611,14 +579,14 @@ seeking a fully funded PhD position</pre>
           <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span><div><p class="cert-t">Cisco CCST Cybersecurity</p><p class="cert-s">Cisco</p></div></li>
           <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-net"/></svg></span><div><p class="cert-t">Cisco CCST Networking</p><p class="cert-s">Cisco</p></div></li>
           <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-award"/></svg></span><div><p class="cert-t">Technest Scholarship</p><p class="cert-s">Winner, awarded twice</p></div></li>
+          <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-net"/></svg></span><div><p class="cert-t">Network Administration Honor Diploma</p><p class="cert-s">Code Academy</p></div></li>
+          <li><span class="ico"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><div><p class="cert-t">Cybersecurity Bootcamp</p><p class="cert-s">Codelandia · full-scholarship graduate</p></div></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== Projects ===== -->
-<!-- Edit these projects: titles, descriptions, status ("prog" = In progress, "plan" = Planned), tags and GitHub links -->
 <section class="section" id="projects" aria-labelledby="projects-title">
   <div class="wrap">
     <div class="head reveal">
@@ -652,7 +620,6 @@ seeking a fully funded PhD position</pre>
   </div>
 </section>
 
-<!-- ===== Publications ===== -->
 <section class="section" id="publications" aria-labelledby="publications-title">
   <div class="wrap">
     <div class="head reveal">
@@ -667,18 +634,9 @@ seeking a fully funded PhD position</pre>
         <p class="mono">status: drafting</p>
       </div>
     </div>
-    <!-- Future publication entry: copy this block below the callout and fill it in
-    <article class="card" style="padding:24px;margin-top:16px">
-      <p><strong>Hasan Hamidov</strong>, Co-Author One, Co-Author Two</p>
-      <h3 style="font-size:1.1rem;margin:6px 0">Paper title goes here</h3>
-      <p class="mono" style="color:var(--muted);font-size:.85rem">Venue name · 2027</p>
-      <p style="margin-top:10px"><a href="paper.pdf">[PDF]</a> <a href="https://github.com/hasanhamidov/repo" target="_blank" rel="noopener noreferrer">[Code]<span class="sr-only"> (opens in a new tab)</span></a></p>
-    </article>
-    -->
   </div>
 </section>
 
-<!-- ===== Contact ===== -->
 <section class="band contact" id="contact" aria-labelledby="contact-title">
   <svg class="band-grid" aria-hidden="true"><rect width="100%" height="100%" fill="url(#grid)"/></svg>
   <div class="glow g1" aria-hidden="true"></div>
@@ -693,7 +651,7 @@ seeking a fully funded PhD position</pre>
     </div>
     <p class="sr-only" id="copy-status" aria-live="polite"></p>
     <div class="socials">
-      <a href="https://linkedin.com/in/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg><span class="sr-only">LinkedIn (opens in a new tab)</span></a>
+      <a href="https://www.linkedin.com/in/hasan-hamidov/" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-in"/></svg><span class="sr-only">LinkedIn (opens in a new tab)</span></a>
       <a href="https://github.com/hasanhamidov" target="_blank" rel="noopener noreferrer"><svg class="i" aria-hidden="true"><use href="#i-gh"/></svg><span class="sr-only">GitHub (opens in a new tab)</span></a>
     </div>
   </div>
@@ -701,7 +659,6 @@ seeking a fully funded PhD position</pre>
 
 </main>
 
-<!-- ===== Footer ===== -->
 <footer class="footer">
   <div class="wrap">
     <span>© 2026 Hasan Hamidov</span>
@@ -716,7 +673,6 @@ seeking a fully funded PhD position</pre>
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mqDark=window.matchMedia('(prefers-color-scheme: dark)');
 
-  /* ----- Theme toggle ----- */
   var tBtn=d.getElementById('theme-toggle');
   function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':mqDark.matches;}
   function syncToggle(){tBtn.setAttribute('aria-label',isDark()?'Switch to light theme':'Switch to dark theme');}
@@ -729,7 +685,6 @@ seeking a fully funded PhD position</pre>
   if(mqDark.addEventListener)mqDark.addEventListener('change',syncToggle);
   syncToggle();
 
-  /* ----- Header: solid after hero, mobile menu ----- */
   var header=d.getElementById('site-header'),hero=d.getElementById('hero');
   var menuBtn=d.getElementById('menu-btn'),menu=d.getElementById('nav-menu');
   if(hasIO){
@@ -746,7 +701,6 @@ seeking a fully funded PhD position</pre>
     if(e.key==='Escape'&&menuBtn.getAttribute('aria-expanded')==='true'){setMenu(false);menuBtn.focus();}
   });
 
-  /* ----- Highlight current section in nav ----- */
   var links={};
   [].forEach.call(menu.querySelectorAll('a'),function(a){links[a.getAttribute('href').slice(1)]=a;});
   function setCurrent(id){
@@ -765,7 +719,6 @@ seeking a fully funded PhD position</pre>
     },{passive:true});
   }
 
-  /* ----- Reveal on scroll ----- */
   var rv=d.querySelectorAll('.reveal');
   if(reduce||!hasIO){[].forEach.call(rv,function(el){el.classList.add('in');});}
   else{
@@ -775,7 +728,6 @@ seeking a fully funded PhD position</pre>
     [].forEach.call(rv,function(el){ro.observe(el);});
   }
 
-  /* ----- Count-up stats ----- */
   function countUp(el){
     var raw=el.getAttribute('data-count'),target=parseFloat(raw),dec=(raw.split('.')[1]||'').length;
     var pre=el.getAttribute('data-prefix')||'',suf=el.getAttribute('data-suffix')||'',start=null;
@@ -794,7 +746,6 @@ seeking a fully funded PhD position</pre>
     [].forEach.call(d.querySelectorAll('[data-count]'),function(n){co.observe(n);});
   }
 
-  /* ----- Experience tabs ----- */
   var tabs=[].slice.call(d.querySelectorAll('[role="tab"]')),tablist=d.querySelector('[role="tablist"]');
   function selectTab(tab,focus){
     tabs.forEach(function(t){
@@ -821,7 +772,6 @@ seeking a fully funded PhD position</pre>
   if(mqNarrow.addEventListener)mqNarrow.addEventListener('change',syncOrient);
   syncOrient();
 
-  /* ----- Copy email ----- */
   var copyBtn=d.getElementById('copy-btn'),copyLabel=copyBtn.querySelector('span'),live=d.getElementById('copy-status');
   var EMAIL='hasanhamidovinfo@gmail.com',copyTimer;
   function fallbackCopy(){
@@ -843,7 +793,6 @@ seeking a fully funded PhD position</pre>
     }else{copied(fallbackCopy());}
   });
 
-  /* ----- Terminal typing (visual only; full text is in the sr-only <pre>) ----- */
   var term=d.getElementById('term');
   if(term&&!reduce){
     var lines=[].slice.call(term.querySelectorAll('.ln'));
