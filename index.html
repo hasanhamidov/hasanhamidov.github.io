@@ -252,6 +252,15 @@ button{font:inherit;color:inherit;cursor:pointer}
 .more{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.92rem;text-decoration:none}
 .more:hover{text-decoration:underline;text-underline-offset:4px}
 
+.feature{display:grid;grid-template-columns:1fr auto;gap:24px 40px;align-items:end;padding:36px;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.feature::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,var(--accent-bright),var(--accent-2))}
+.f-meta{margin:0 0 10px;font:400 .82rem var(--f-mono);color:var(--muted)}
+.feature h3{font-size:clamp(1.35rem,2.6vw,1.75rem);color:var(--text)}
+.feature p{color:var(--muted);margin-top:10px;max-width:60ch}
+.feature .more{white-space:nowrap;color:var(--accent)}
+.feature:hover h3{color:var(--accent)}
+.all-posts{display:inline-block;margin-top:18px;font-weight:600;font-size:.92rem;text-decoration:none}
+.all-posts:hover{text-decoration:underline;text-underline-offset:4px}
 .callout{display:flex;gap:24px;align-items:flex-start;padding:32px;border:2px dashed var(--border);border-radius:16px;background:var(--surface)}
 .callout .ico{width:52px;height:52px;border-radius:14px}
 .callout h3{font-size:1.25rem}
@@ -284,17 +293,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 }
 
 @media (max-width:1024px){
+  .menu-btn{display:inline-grid}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px 16px 16px;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
+  .site-header.open .nav-links{display:flex}
+  .nav-links a{padding:13px 12px;font-size:1.02rem}
+  .nav-links a[aria-current]::after{left:0;right:auto;top:12px;bottom:12px;width:3px;height:auto}
   .hero-grid{gap:36px}
   .bento{grid-template-columns:repeat(2,1fr)}
   .tile.big{grid-row:auto}
   .tile.wide{grid-column:auto}
 }
 @media (max-width:860px){
-  .menu-btn{display:inline-grid}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:8px 16px 16px;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow)}
-  .site-header.open .nav-links{display:flex}
-  .nav-links a{padding:13px 12px;font-size:1.02rem}
-  .nav-links a[aria-current]::after{left:0;right:auto;top:12px;bottom:12px;width:3px;height:auto}
   .hero{min-height:0;padding:116px 0 140px}
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .stats{grid-template-columns:repeat(2,1fr);margin-top:-80px}
@@ -320,6 +329,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   .tile.big h3{font-size:1.35rem}
   .panel{padding:24px 20px}
   .callout{flex-direction:column;padding:24px;gap:16px}
+  .feature{grid-template-columns:1fr;padding:26px 22px}
   .certs{padding:4px 18px}
   .term-body{font-size:.8rem;padding:16px 16px 20px}
   .glow{width:360px;height:360px}
@@ -365,6 +375,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -617,6 +628,26 @@ seeking a fully funded PhD position</pre>
         <a class="more" href="https://github.com/hasanhamidov/cyberark-pam-guide" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">→</span><span class="sr-only"> (opens in a new tab)</span></a>
       </article>
     </div>
+  </div>
+</section>
+
+<section class="section" id="writing" aria-labelledby="writing-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">// writing</p>
+      <h2 id="writing-title">Writing</h2>
+      <p class="lead">Notes on security operations, detection engineering and the research questions that come out of them.</p>
+    </div>
+    <a class="card lift feature reveal" href="writing/securing-privileged-access/">
+      <div>
+        <p class="f-meta"><time datetime="2026-10-26">26 Oct 2026</time> · 7 min read</p>
+        <h3>Securing Privileged Access in Critical Infrastructure</h3>
+        <p>Attackers rarely need a zero-day when they can simply log in. Five practical principles for protecting the accounts they want most, in environments where availability and safety come first.</p>
+        <div class="tags"><span class="tag">PAM</span><span class="tag">Critical infrastructure</span><span class="tag alt">Detection engineering</span></div>
+      </div>
+      <span class="more">Read article <span aria-hidden="true">→</span></span>
+    </a>
+    <a class="all-posts reveal" href="writing/">All writing →</a>
   </div>
 </section>
 

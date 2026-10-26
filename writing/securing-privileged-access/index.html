@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Securing Privileged Access in Critical Infrastructure — Hasan Hamidov</title>
+<meta name="description" content="Why privileged accounts are the keys to critical-infrastructure networks, and five practical principles for securing them: discovery, least privilege, vaulting, session brokering and vendor access.">
+<meta name="author" content="Hasan Hamidov">
+<link rel="canonical" href="https://hasanhamidov.github.io/writing/securing-privileged-access/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Securing Privileged Access in Critical Infrastructure">
+<meta property="og:description" content="Five practical principles for protecting the accounts attackers want most, in environments where availability and safety come first.">
+<meta property="og:url" content="https://hasanhamidov.github.io/writing/securing-privileged-access/">
+<meta property="og:site_name" content="Hasan Hamidov">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Hasan Hamidov">
+<meta property="article:published_time" content="2026-10-26">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1120" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314b8a6'/%3E%3Cstop offset='1' stop-color='%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='38' fill='%23fff'%3EH%3C/text%3E%3C/svg%3E">
+<script>
+(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@600;700&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Securing Privileged Access in Critical Infrastructure",
+  "description": "Five practical principles for protecting privileged accounts in critical-infrastructure environments.",
+  "datePublished": "2026-10-26",
+  "author": {"@type": "Person", "name": "Hasan Hamidov", "url": "https://hasanhamidov.github.io/"},
+  "mainEntityOfPage": "https://hasanhamidov.github.io/writing/securing-privileged-access/",
+  "keywords": "privileged access management, PAM, critical infrastructure, least privilege, detection engineering"
+}
+</script>
+<style>
+:root{
+  --bg:#ffffff;--surface:#f7f9fc;--text:#0f172a;--body:#1e293b;--muted:#475569;--border:#e2e8f0;
+  --accent:#0f766e;--accent-bright:#14b8a6;--accent-2:#6366f1;--accent-soft:#e6f6f4;
+  --nav-bg:rgba(255,255,255,.88);
+  --f-head:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-serif:"Source Serif 4",Charter,Georgia,serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1120;--surface:#111a2e;--text:#e2e8f0;--body:#cbd5e1;--muted:#94a3b8;--border:#1e293b;
+    --accent:#2dd4bf;--accent-bright:#2dd4bf;--accent-2:#818cf8;--accent-soft:#0f2a2c;
+    --nav-bg:rgba(11,17,32,.88);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1120;--surface:#111a2e;--text:#e2e8f0;--body:#cbd5e1;--muted:#94a3b8;--border:#1e293b;
+  --accent:#2dd4bf;--accent-bright:#2dd4bf;--accent-2:#818cf8;--accent-soft:#0f2a2c;
+  --nav-bg:rgba(11,17,32,.88);color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--body);font:400 1rem/1.7 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:#0f766e;color:#fff;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.top{position:sticky;top:0;z-index:20;background:var(--nav-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.top-in{display:flex;align-items:center;gap:12px;height:64px;width:min(1120px,100% - 48px);margin:0 auto}
+.logo{font:500 1.05rem var(--f-mono);color:var(--text);text-decoration:none;margin-right:auto}
+.logo span{display:inline-block;width:.55em;height:1.1em;background:var(--accent-bright);margin-left:3px;vertical-align:-.18em}
+.top a.nl{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;padding:8px 10px;border-radius:8px}
+.top a.nl:hover{color:var(--text)}
+.icon-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer}
+.icon-btn:hover{border-color:var(--accent)}
+.t-sun{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .t-sun{display:block}:root:not([data-theme="light"]) .t-moon{display:none}}
+:root[data-theme="dark"] .t-sun{display:block}:root[data-theme="dark"] .t-moon{display:none}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent-bright),var(--accent-2))}
+
+.article{width:min(700px,100% - 48px);margin:0 auto;padding:64px 0 40px}
+.kicker{font:500 .85rem var(--f-mono);color:var(--accent)}
+h1{font:700 clamp(2rem,5.2vw,2.9rem)/1.12 var(--f-head);letter-spacing:-.025em;color:var(--text);margin:12px 0 14px}
+.dek{font:400 1.3rem/1.5 var(--f-serif);color:var(--muted);margin:0}
+.byline{display:flex;align-items:center;gap:14px;margin:30px 0 40px;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.avatar{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;flex:none;background:linear-gradient(135deg,#14b8a6,#6366f1);color:#fff;font:700 1rem var(--f-head)}
+.byline b{display:block;color:var(--text);font-weight:600}
+.byline small{display:block;font:400 .82rem var(--f-mono);color:var(--muted)}
+
+.prose{font:400 1.2rem/1.78 var(--f-serif);color:var(--body)}
+.prose p{margin:0 0 1.5em}
+.prose h2{font:700 1.6rem/1.25 var(--f-head);letter-spacing:-.015em;color:var(--text);margin:2.2em 0 .7em}
+.prose h3{font:600 1.2rem/1.35 var(--f-head);color:var(--text);margin:1.8em 0 .5em}
+.prose strong{color:var(--text);font-weight:600}
+.prose ul,.prose ol{margin:0 0 1.5em;padding-left:1.3em}
+.prose li{margin:.4em 0}
+.prose li::marker{color:var(--accent)}
+.prose code{font:400 .82em var(--f-mono);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.1em .4em}
+.prose blockquote{margin:2em 0;padding:4px 0 4px 24px;border-left:3px solid var(--accent-bright);font-style:italic;font-size:1.35rem;line-height:1.55;color:var(--text)}
+.prose hr{border:0;text-align:center;margin:2.6em 0;color:var(--muted)}
+.prose hr::before{content:"· · ·";letter-spacing:.6em;font-size:1.2rem}
+.table-wrap{overflow-x:auto;margin:0 0 1.6em;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font:400 .92rem/1.5 var(--f-body)}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--surface);color:var(--text);font-weight:600}
+tr:last-child td{border-bottom:0}
+td:first-child{font-family:var(--f-mono);white-space:nowrap;color:var(--accent)}
+.checklist{list-style:none;padding:0!important}
+.checklist li{position:relative;padding-left:34px}
+.checklist li::before{content:"";position:absolute;left:0;top:.38em;width:20px;height:20px;border-radius:6px;border:2px solid var(--accent-bright)}
+.checklist li::after{content:"";position:absolute;left:7px;top:.55em;width:6px;height:11px;border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.refs{font:400 .95rem/1.6 var(--f-body)}
+.refs li{margin:.5em 0}
+.note{font:400 .95rem/1.6 var(--f-body);color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-top:2em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px}
+.tag{font:500 .78rem/1 var(--f-mono);padding:7px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.author{display:flex;gap:18px;align-items:flex-start;margin-top:40px;padding:24px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+.author .avatar{width:56px;height:56px;font-size:1.2rem}
+.author h2{font:600 1.05rem var(--f-head);color:var(--text);margin:0}
+.author p{margin:6px 0 0;font-size:.95rem;color:var(--muted)}
+.author a{font-weight:600;font-size:.92rem;text-decoration:none}
+.foot{border-top:1px solid var(--border);padding:22px 0;margin-top:56px;font:400 .82rem var(--f-mono);color:var(--muted)}
+.foot div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;width:min(1120px,100% - 48px);margin:0 auto}
+.foot a{color:var(--muted)}
+@media (max-width:600px){
+  .top-in,.article,.foot div{width:calc(100% - 32px)}
+  .article{padding-top:40px}
+  .prose{font-size:1.1rem}
+  .dek{font-size:1.15rem}
+  .prose blockquote{font-size:1.2rem;padding-left:18px}
+  .author{flex-direction:column}
+  .top a.nl.hide-sm{display:none}
+}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <nav class="top-in" aria-label="Main">
+    <a class="logo" href="/">hasan.h<span aria-hidden="true"></span></a>
+    <a class="nl hide-sm" href="/">Home</a>
+    <a class="nl" href="/writing/">Writing</a>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="i t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="i t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+    </button>
+  </nav>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+<article class="article">
+  <p class="kicker">// privileged access · critical infrastructure</p>
+  <h1>Securing Privileged Access in Critical Infrastructure</h1>
+  <p class="dek">Attackers rarely need a zero-day when they can simply log in. Five practical principles for protecting the accounts they want most, in environments where availability and safety come first.</p>
+
+  <div class="byline">
+    <span class="avatar" aria-hidden="true">HH</span>
+    <div>
+      <b>Hasan Hamidov</b>
+      <small><time datetime="2026-10-26">26 Oct 2026</time> · 7 min read</small>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Ask any incident responder how attackers moved from their first foothold to the systems that mattered, and the answer is usually the same: they used legitimate credentials. MITRE ATT&amp;CK lists <strong>Valid Accounts (T1078)</strong> under four different tactics — initial access, persistence, privilege escalation and defence evasion — because a stolen administrator password is useful at almost every stage of an intrusion.</p>
+    <p>Privileged accounts are the keys to the network: domain administrators, local administrators, service accounts, database owners, firewall and hypervisor admins, and the engineering accounts that can change a control system. Whoever holds them can switch off logging, push software to every endpoint, or stop a process that people depend on.</p>
+    <p>Privileged access management (PAM) is the discipline of controlling those keys. This article looks at why it matters even more in critical infrastructure, and at five principles that make a PAM programme effective rather than just a box to tick.</p>
+
+    <h2>Why critical infrastructure is different</h2>
+    <p>Railways, energy grids, water utilities and telecom networks share a few traits that make privileged access both more important and harder to secure than in a typical office network:</p>
+    <ul>
+      <li><strong>Availability and safety come first.</strong> You cannot reboot a signalling server or rotate a password on a production controller whenever you like. Every security change has to fit around operations.</li>
+      <li><strong>Long-lived and legacy systems.</strong> Equipment often runs for ten or twenty years. Older systems may only support shared local accounts, hard-coded credentials or protocols without modern authentication.</li>
+      <li><strong>Many third parties.</strong> Vendors and integrators need remote access for maintenance, often to the most sensitive systems, and often with powerful accounts.</li>
+      <li><strong>IT and OT meet.</strong> Corporate IT, engineering workstations and operational technology connect at a few points. An administrator account that crosses that boundary is a direct path from email phishing to physical processes.</li>
+    </ul>
+    <p>Standards reflect this. IEC 62443, the main standard family for industrial automation security, puts identification, authentication and use control at the centre of its system requirements. NIST SP 800-53 describes the same idea as <strong>least privilege (AC-6)</strong>: every user and process gets only the access it needs, and nothing more.</p>
+
+    <blockquote>A PAM tool does not secure privileged access. A process does — the tool only makes the process enforceable.</blockquote>
+
+    <h2>Five principles that work</h2>
+
+    <h3>1. Know every privileged account</h3>
+    <p>You cannot protect accounts you do not know exist. Discovery is the least exciting part of PAM and the most important. A complete inventory includes:</p>
+    <ul>
+      <li>members of privileged directory groups (for example Domain Admins, Enterprise Admins and their nested groups);</li>
+      <li>local administrator accounts on servers and workstations;</li>
+      <li>service and application accounts, especially those with interactive logon rights or passwords that never expire;</li>
+      <li>network device, hypervisor, backup and database administrator accounts;</li>
+      <li>vendor and engineering accounts on operational systems;</li>
+      <li>emergency "break-glass" accounts.</li>
+    </ul>
+    <p>Treat the inventory as a living asset. New systems arrive, projects create temporary admin accounts, and group memberships drift. Re-run discovery on a schedule and investigate anything that appears outside the approved process.</p>
+
+    <h3>2. Grant as little as possible, for as short as possible</h3>
+    <p>Least privilege has two dimensions: <em>scope</em> and <em>time</em>. Scope means an administrator for the ticketing system should not be a domain administrator. Time means that most people do not need standing privilege at all; they need it for the duration of a change.</p>
+    <p>Just-in-time access — privileges granted for a specific task and removed afterwards — reduces the window in which a stolen credential is useful. Combine it with <strong>tiering</strong>: separate the accounts that manage identity systems (tier 0), servers and applications (tier 1) and user workstations (tier 2), and never let a higher-tier account log on to a lower-tier machine, where its credentials could be harvested.</p>
+
+    <h3>3. Vault and rotate credentials</h3>
+    <p>If an administrator knows a password, that password can be phished, reused or written down. Storing privileged credentials in a vault and rotating them automatically changes that: people check out access, the vault records who did so, and the password changes afterwards.</p>
+    <p>Two quick wins stand out. First, give every machine a <strong>unique local administrator password</strong>; a single shared password turns one compromised host into all of them, which is exactly what techniques such as <strong>Pass the Hash (T1550.002)</strong> exploit. Windows LAPS solves this for Windows endpoints at no extra cost. Second, bring service accounts under management, or replace them with managed service accounts where the platform supports it.</p>
+    <p>In operational environments, test rotation carefully. Some applications store credentials in configuration files or scripts, and an unplanned rotation can stop a service. Map dependencies first and schedule the first rotation in a maintenance window.</p>
+
+    <h3>4. Broker and record privileged sessions</h3>
+    <p>Administrators should not connect directly from their everyday workstation to critical servers. Instead, privileged sessions go through a hardened jump host or session broker that injects the credential without revealing it, enforces approval where needed, and records the session.</p>
+    <p>This gives three benefits at once: credentials never touch a potentially compromised endpoint, there is a single choke point that firewalls can enforce, and there is an audit trail of exactly what was done. Session recordings are also valuable during investigations, because they show actions rather than just logon events.</p>
+
+    <h3>5. Treat vendor access as high risk</h3>
+    <p>Third-party remote access is one of the most common ways into industrial networks. Vendor access should be:</p>
+    <ul>
+      <li><strong>individual</strong> — named accounts, never a shared "vendor" login;</li>
+      <li><strong>time-bound</strong> — enabled for an agreed window and disabled automatically afterwards;</li>
+      <li><strong>approved</strong> — requested through a ticket and approved by the system owner;</li>
+      <li><strong>brokered and recorded</strong> — through the same session controls as internal administrators.</li>
+    </ul>
+
+    <h2>PAM is also a detection sensor</h2>
+    <p>From a SOC perspective, a well-run PAM programme does something extra: it defines what <em>normal</em> privileged activity looks like. Once all legitimate admin work flows through the vault and session broker, any privileged activity that does <em>not</em> is suspicious by definition.</p>
+    <p>That turns into concrete detections. On Windows, a few security events are particularly useful when correlated with PAM records:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Event ID</th><th scope="col">Meaning</th><th scope="col">Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>4624 (type 10)</td><td>Successful remote interactive (RDP) logon</td><td>Privileged RDP logons that do not originate from the jump host bypass the broker.</td></tr>
+          <tr><td>4672</td><td>Special privileges assigned to a new logon</td><td>Marks administrator-level logons; useful for spotting privileged use outside approved sessions.</td></tr>
+          <tr><td>4728 / 4732 / 4756</td><td>Member added to a global, local or universal security group</td><td>Unexpected additions to privileged groups are a classic persistence technique.</td></tr>
+          <tr><td>4625</td><td>Failed logon</td><td>Bursts against privileged accounts can indicate password guessing or spraying.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Useful correlation ideas include a privileged logon with no matching vault checkout, a vaulted account used from an unexpected host, a break-glass account used at all, and changes to privileged group membership outside a change window. Each of these is cheap to implement and produces few false positives, because the baseline is so well defined.</p>
+
+    <h2>Common mistakes</h2>
+    <ul>
+      <li><strong>Vaulting without rotating.</strong> If the old password is still known, the vault adds little. Rotate immediately after onboarding an account.</li>
+      <li><strong>Forgetting service accounts.</strong> They often have broad rights and passwords that have not changed in years.</li>
+      <li><strong>Unmonitored break-glass accounts.</strong> Emergency accounts are necessary, but every use should raise an alert.</li>
+      <li><strong>Leaving the PAM platform itself exposed.</strong> The vault holds the keys to everything. Treat it as a tier-0 asset, with its own hardening, monitoring and backups.</li>
+      <li><strong>Making the secure path the slow path.</strong> If using the broker takes much longer than a direct connection, people will find workarounds. Usability is a security requirement.</li>
+    </ul>
+
+    <h2>A short checklist</h2>
+    <ul class="checklist">
+      <li>We have a current inventory of all privileged accounts, including service, vendor and break-glass accounts.</li>
+      <li>Standing privilege is limited; most administrative access is granted just in time.</li>
+      <li>Privileged credentials are vaulted and rotated, and every machine has a unique local admin password.</li>
+      <li>Administrative sessions to critical systems go through a broker and are recorded.</li>
+      <li>Vendor access is individual, time-bound, approved and recorded.</li>
+      <li>The SOC alerts on privileged activity that bypasses the PAM workflow.</li>
+    </ul>
+
+    <hr>
+
+    <p>Privileged access management is often presented as a compliance project. In critical infrastructure it is much more than that: it is one of the few controls that directly limits how far an attacker can go after the first compromise. The open question I find most interesting is how to use PAM and session data as a high-quality signal for detection, and I plan to explore that further in future posts.</p>
+
+    <h2>References</h2>
+    <ol class="refs">
+      <li>MITRE ATT&amp;CK, <a href="https://attack.mitre.org/techniques/T1078/" target="_blank" rel="noopener noreferrer">T1078 Valid Accounts<span class="sr-only"> (opens in a new tab)</span></a> and <a href="https://attack.mitre.org/techniques/T1550/002/" target="_blank" rel="noopener noreferrer">T1550.002 Pass the Hash<span class="sr-only"> (opens in a new tab)</span></a>.</li>
+      <li>NIST, <a href="https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final" target="_blank" rel="noopener noreferrer">SP 800-53 Rev. 5, Security and Privacy Controls<span class="sr-only"> (opens in a new tab)</span></a> — control AC-6, Least Privilege.</li>
+      <li>CISA and NSA, <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-278a" target="_blank" rel="noopener noreferrer">Top Ten Cybersecurity Misconfigurations (AA23-278A)<span class="sr-only"> (opens in a new tab)</span></a>, 2023.</li>
+      <li>Microsoft, <a href="https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model" target="_blank" rel="noopener noreferrer">Enterprise access model<span class="sr-only"> (opens in a new tab)</span></a> and <a href="https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview" target="_blank" rel="noopener noreferrer">Windows LAPS overview<span class="sr-only"> (opens in a new tab)</span></a>.</li>
+      <li>ISA/IEC 62443 series, Security for Industrial Automation and Control Systems.</li>
+    </ol>
+
+    <p class="note">The views in this article are my own. It describes general practice and does not describe the systems or configuration of any specific organisation.</p>
+  </div>
+
+  <div class="tags"><span class="tag">PAM</span><span class="tag">Critical infrastructure</span><span class="tag">Detection engineering</span><span class="tag">Least privilege</span></div>
+
+  <aside class="author" aria-labelledby="author-title">
+    <span class="avatar" aria-hidden="true">HH</span>
+    <div>
+      <h2 id="author-title">Hasan Hamidov</h2>
+      <p>Cybersecurity specialist working in SOC and detection engineering, and a prospective PhD researcher in IoT malware detection and network anomaly detection.</p>
+      <p><a href="/">About me →</a> &nbsp; <a href="/writing/">More writing →</a></p>
+    </div>
+  </aside>
+</article>
+</main>
+
+<footer class="foot">
+  <div><span>© 2026 Hasan Hamidov</span><a href="#main">Back to top ↑</a></div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var d=document,root=d.documentElement,mq=window.matchMedia('(prefers-color-scheme: dark)'),btn=d.getElementById('theme-toggle');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':mq.matches;}
+  function sync(){btn.setAttribute('aria-label',isDark()?'Switch to light theme':'Switch to dark theme');}
+  btn.addEventListener('click',function(){var n=isDark()?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}sync();});
+  if(mq.addEventListener)mq.addEventListener('change',sync);
+  sync();
+  var bar=d.getElementById('progress'),ticking=false;
+  function update(){var h=root.scrollHeight-window.innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(window.scrollY/h,1):0)+')';ticking=false;}
+  window.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
